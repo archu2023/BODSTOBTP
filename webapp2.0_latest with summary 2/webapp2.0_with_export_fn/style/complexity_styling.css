@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Inter');
+/*
+The menu option in the streamlit
+*/
+
+
+
+header {
+    display: none !important;
+}
+
+html, body, [class*="css"]  {
+    font-family: 'Poppins', sans-serif;
+}
+
+div.block-container {
+    margin: 0;
+    padding: 5;
+    padding-top: 0 !important;
+}
+section.main {
+    margin: 0;
+    padding: 0;
+    color: #202020;
+    background-color: #F3F3F3;
+}
+section.main > div.block-container > div:nth-child(1) > div > div:nth-child(7) > div > div:nth-child(1) > div > div > div > section{
+    background-color: #E1EBF8;
+    border-radius: 10px;
+}
+/* tr:hover {
+    background: grey !important;    
+} */
+
+
+/*For the 3 Information boxes */
+.infoBox {
+    padding: 0px !important;
+    /* display: inline-block; */
+    box-sizing: border-box;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* text-align: center; */
+    /* display: in  line-block; */
+    justify-content: space-between;
+    /* align-items: center; */
+    flex-wrap:wrap;
+    /* background-color: #fff; Set background color to white */
+    min-width: 340px !important;
+    max-width: 340px !important;
+    /* Add some padding for spacing */
+    border-radius: 15px;
+}
+.infoContainer {
+    /* display: flex */
+    justify-content: space-between !important;
+    padding-bottom: 20px;
+}
+
+.infoBox h2 {
+    float: left;
+    color: #4472C4; /* Set text color to blue */
+}
+.infoBox h6 {
+    flex: 1;
+    display: block;
+    margin: 0;
+}
+
+.infoBox img {
+    margin: 16px;
+
+    width: 50px;
+    margin-left: 10px;
+}
+#firstbox {
+    background-color:  #FFFFFF;
+}
+
+#middlebox {
+    background-color:  #C8E6C9;
+}
+
+#lastbox {
+    background-color: #FFCDD2;
+}
+/* Style for the container */
+/* Style for the container */
+/* .htmlTableContainer {
+    /* table-layout: fixed; */
+    /* position:  ;
+    overflow-y: scroll;
+    width: 75%;
+    max-height: 70vh;
+    border: solid 1px rgba(49, 51, 63, 0.2);
+    overflow: auto;
+
+}  */
+/* elemen  t.style {
+    flex-direction: row-reverse;
+    display: flex;
+} */
+/* .st-emotion-cache-5rimss:last-child {
+    flex-direction: row-reverse;
+    display: flex;
+} */
+
+
+.htmlTableContainer {
+    /* table-layout: fixed; */
+    overflow-y: scroll;
+    /* position: relative; */
+    max-height: 70vh;
+    border: solid 1px rgba(49, 51, 63, 0.2);
+    /* border-radius: 5px; */
+    overflow: auto;
+    margin-bottom: 20px;
+
+}
+.st-emotion-cache-1629p8f{
+    padding: 0%;
+}
+
+/* Style for the table */
+.htmlTableContainer table {
+    padding-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    /* height: 200px; */
+}
+
+
+/* Style for table headers */
+.htmlTableContainer th {
+    background-color: #161F27;
+    padding: 5px !important;
+    text-align: center;
+    border: 1px solid #686C71;
+    font-weight: normal;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Style for table cells */
+.htmlTableContainer td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+
+/* Style for alternate rows */
+.htmlTableContainer tbody tr:nth-child(odd) {
+    background-color: #C8E6C9 ;
+}
+
+/* Style for the header row */
+.htmlTableContainer thead tr {
+    background-color: #EEF8EE;
+    color: white;
+    font-size: medium;
+}
+div[data-testid="AppViewBlockSpacer"] {
+    display: none;
+}
+
+
+
+
+footer {
+    visibility: hidden;
+}
+
+.css-6awftf {display: none;}
+.css-1k67eer {display:none}
+.css-m70y {display:none}
+.css-15zrgzn {display: none}
+.css-zt5igj svg{display:none}
+.css-zt5igj > a{display:none}
+
+.css-15zrgzn {display: none}
+.css-15zrgzn {display: none}
+.css-eczf16 {display: none}
+.css-jn99sy {display: none}
+.css-zt5igj svg{display:none}
+.css-m70y {display:none}
+.css-15zrgzn {display: none}
+a.st-emotion-cache
+{
+    display: none;
+}
+

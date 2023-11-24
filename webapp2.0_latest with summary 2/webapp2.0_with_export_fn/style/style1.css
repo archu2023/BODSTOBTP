@@ -1,0 +1,49 @@
+/* upload files zone */
+section.main > div.block-container > div:nth-child(1) > div > div:nth-child(7) > div > div:nth-child(1) > div > div > div > section{
+    background-color: #E1EBF8;
+    border-radius: 10px;
+}
+
+section.main > div.block-container > div:nth-child(1) > div > div:nth-child(7) > div > div:nth-child(1) > div > div > div > section > button{
+    width: 144px;
+}
+
+
+section.main > div.block-container > div:nth-child(1) > div > div:nth-child(7) > div > div:nth-child(1) > div > div > div > div > ul > li > div > div:first-child::after{
+    content: "BODS";
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+
+section.main > div.block-container > div:nth-child(1) > div > div:nth-child(7) > div > div:nth-child(1) > div > div > div > div > ul > li > div > div > svg:first-child{
+    display: none;
+}
+
+
+
+/* browse files button */
+section.main > div.block-container > div:nth-child(1) > div > div:nth-child(7) > div > div:nth-child(1) > div > div > div > section > button{
+    background-color: #388E3C;
+    color:white;
+    font-size:16px;
+    height:48px;
+    
+    min-width:188px;
+    max-width:196px;
+    border: none;
+    border-radius:40px;
+}
+
+section.main > div.block-container > div:nth-child(1) > div > div:nth-child(7) > div > div:nth-child(1) > div > div > div > section > button:hover {
+    background-color: #125115;
+    color:white;
+    border: none;
+    border-radius:40px;
+}
+
+section.main > div.block-container > div:nth-child(1) > div > div:nth-child(7) > div > div:nth-child(1) > div > div > div > section > button:focus {
+    background-color: #016655;
+    color:white !important;
+    border: none;
+    border-radius:40px;
+}
