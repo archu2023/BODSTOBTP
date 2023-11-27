@@ -11,8 +11,8 @@ from components.title import title as titleComponent
 
 
 # Setting Page Configuration
-parent_dir = os.path.dirname(os.path.abspath(__file__))
-icon = os.path.join(parent_dir, "invenics_logo.png")
+parent_dir = os.path.dirname()
+icon = os.path.join(parent_dir, "/webapp/invenics_logo.png")
 # icon = Image.open("./invenics_logo.png")
 st.set_page_config(
     initial_sidebar_state="auto",
