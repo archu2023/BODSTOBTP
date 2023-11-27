@@ -11,7 +11,8 @@ from components.title import title as titleComponent
 
 
 # Setting Page Configuration
-parent_dir = os.path.dirname()
+parent_dir = os.path.dirname(os.path.abspath(__file__))
+st.markdown(str(parent_dir))
 icon = os.path.join(parent_dir, "/webapp/invenics_logo.png")
 # icon = Image.open("./invenics_logo.png")
 st.set_page_config(
