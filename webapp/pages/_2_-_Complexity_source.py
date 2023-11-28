@@ -20,7 +20,7 @@ st.set_page_config(
 )
 show_pages(
     [
-        Page("_1_-_Home.py"),
+        Page("Home.py"),
         Page("pages\\_2_-_Complexity_source.py"),
         Page("pages\\_3_-_Summary.py"),
         Page("pages\\_4_-_Conversion_Results.py"),
