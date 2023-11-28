@@ -14,7 +14,7 @@ os.chdir(os.path.dirname(__file__))
 # parent_dir = os.path.dirname(os.path.abspath(__file__))
 # st.markdown(str(parent_dir))
 # icon = os.path.join(parent_dir,"/webapp/invenics_logo.png")
-image_path=os.path.dirname(os.path.abspath(__file__),'static/invenics_logo.png')
+image_path=os.path.dirname('static/invenics_logo.png')
 st.write(image_path)
 icon = Image.open(image_path)
 st.set_page_config(
@@ -25,7 +25,7 @@ st.set_page_config(
 )
 
 # page_path = os.path.join(parent_dir,"webapp/Home.py")
-show_pages([Page("Home.py")])
+# show_pages([Page("Home.py")])
 # show_pages([Page(page_path)])
 show_pages(
     [
