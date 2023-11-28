@@ -13,7 +13,7 @@ from components.title import title as titleComponent
 # Setting Page Configuration
 parent_dir = os.path.dirname(os.path.abspath(__file__))
 # st.markdown(str(parent_dir))
-icon = os.path.join(parent_dir,"/invenics_logo.png")
+icon = os.path.join(parent_dir,"/webapp/invenics_logo.png")
 # icon = Image.open("invenics_logo.png")
 st.set_page_config(
     initial_sidebar_state="auto",
@@ -21,17 +21,20 @@ st.set_page_config(
     page_icon=icon,
     layout="wide",
 )
-show_pages([Page("_1_-_Home.py")])
-show_pages(
-    [
-        Page("_1_-_Home.py"),
-        Page("pages\\_2_-_Complexity_source.py"),
-        Page("pages\\_3_-_Summary.py"),
-        Page("pages\\_4_-_Conversion_Results.py"),
-        Page("pages\\login.py"),
-    ]
-)
-hide_pages(["2 - Complexity source","3 - Summary", "4 - Conversion Results", "Login"])
+
+page_path = os.path.join(parent_dir,"webapp/_1_-_Home.py")
+# show_pages([Page("_1_-_Home.py")])
+show_pages([Page(page_path)])
+# show_pages(
+#     [
+#         Page("_1_-_Home.py"),
+#         Page("pages\\_2_-_Complexity_source.py"),
+#         Page("pages\\_3_-_Summary.py"),
+#         Page("pages\\_4_-_Conversion_Results.py"),
+#         Page("pages\\login.py"),
+#     ]
+# )
+# hide_pages(["2 - Complexity source","3 - Summary", "4 - Conversion Results", "Login"])
 
 
 with open("style/style.css") as f:
