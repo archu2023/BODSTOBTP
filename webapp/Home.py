@@ -9,7 +9,7 @@ from st_pages import Page, show_pages, hide_pages
 from components.header import header as headerComponent
 from components.title import title as titleComponent
 
-os.chdir(os.path.dirname(__file__))
+# os.chdir(os.path.dirname(__file__))
 # Setting Page Configuration
 # parent_dir = os.path.dirname(os.path.abspath(__file__))
 # st.markdown(str(parent_dir))
