@@ -36,9 +36,9 @@ show_pages([Page(page_path)])
 # )
 # hide_pages(["2 - Complexity source","3 - Summary", "4 - Conversion Results", "Login"])
 
-
-with open("style/style.css") as f:
-    with open("style/style1.css") as f2:
+css_path = os.path.join(parent_dir,"webapp/style/style.css")
+with open(css_path) as f:
+    with open(css_path) as f2:
         st.markdown(f"<style>{f.read()}{f2.read()}</style>", unsafe_allow_html=True)
 
 
