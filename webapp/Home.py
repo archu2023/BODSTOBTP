@@ -15,6 +15,7 @@ os.chdir(os.path.dirname(__file__))
 # st.markdown(str(parent_dir))
 # icon = os.path.join(parent_dir,"/webapp/invenics_logo.png")
 image_path=os.path.dirname(os.path.abspath(__file__),'static/invenics_logo.png')
+st.write(image_path)
 icon = Image.open(image_path)
 st.set_page_config(
     initial_sidebar_state="auto",
