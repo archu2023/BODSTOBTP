@@ -22,10 +22,10 @@ show_pages([Page("_1_-_Home.py")])
 show_pages(
     [
         Page("_1_-_Home.py"),
-        Page("pages\\_2_-_Complexity_source.py"),
-        Page("pages\\_3_-_Summary.py"),
-        Page("pages\\_4_-_Conversion_Results.py"),
-        Page("pages\\login.py"),
+        Page("pages/_2_-_Complexity_source.py"),
+        Page("pages/_3_-_Summary.py"),
+        Page("pages/_4_-_Conversion_Results.py"),
+        Page("pages/login.py"),
     ]
 )
 hide_pages(["2 - Complexity source","3 - Summary", "4 - Conversion Results", "Login"])
