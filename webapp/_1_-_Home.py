@@ -8,7 +8,10 @@ from streamlit_extras.switch_page_button import switch_page
 from st_pages import Page, show_pages, hide_pages
 from components.header import header as headerComponent
 from components.title import title as titleComponent
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+st.markdown(str(BASE_DIR))
 
 # Setting Page Configuration
 icon = Image.open("invenics_logo.png")
@@ -190,7 +193,7 @@ def main():
                     st.session_state.summary_D
                 ) = calculateComplexity(st.session_state.files)
                 # st.session_state.xml_c = (10,5,5)
-                show_pages([Page("pages\\_2_-_Complexity_source.py")])
+                show_pages([Page("pages/_2_-_Complexity_source.py")])
                 switch_page("2 - Complexity source")
 
 
