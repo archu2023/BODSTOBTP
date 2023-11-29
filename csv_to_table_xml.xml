@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataIntegratorExport repositoryVersion="14.2.9.0000" productVersion="14.2.9.1549">
+<DIDatabaseDatastore name="A1_MSSQL" typeId="3" >
+<DIAttributes>
+<DIAttribute name="DBLiveLoad" value="no"/>
+<DIAttribute name="application_type" value="Custom"/>
+<DIAttribute name="cdc_enabled" value="no"/>
+<DIAttribute name="cdc_type" value="native"/>
+<DIAttribute name="datastore_repotype" value="local"/>
+<DIAttribute name="ds_configuration_enabled" value="yes"/>
+<DIAttribute name="ds_configurations" hasNestedXMLTree ="true">
+
+<DSConfigurations>
+<DSConfiguration default="true" name="Configuration1">
+<case_sensitive>yes</case_sensitive>
+<cdc_ra_password>+0400000000120303000803E80B85BDCC09D1AAD0A258A0FF61D139FF8F61851A6133EC4CD71B12249213C94B6B0C849AB6062A5FE673BC4E81</cdc_ra_password>
+<cdc_ra_server>DS_RA</cdc_ra_server>
+<cdc_ra_user>sa</cdc_ra_user>
+<cdc_rs_password>+0400000000120303000803E8015240701A9D008F432161B15927523EC14E418BA5446084F7AE4FB01755A4998D4D1160C4472E8A6133AEF472</cdc_rs_password>
+<cdc_rs_retention>0</cdc_rs_retention>
+<cdc_rs_server>SAMPLE_RS</cdc_rs_server>
+<cdc_rs_user>ds</cdc_rs_user>
+<database_subtype>On Premise</database_subtype>
+<database_type>Microsoft_SQL_Server</database_type>
+<loader_xact_size>1000</loader_xact_size>
+<locale_codepage>&lt;default&gt;</locale_codepage>
+<locale_language>&lt;default&gt;</locale_language>
+<locale_territory>&lt;default&gt;</locale_territory>
+<mssql_windows_authentication>no</mssql_windows_authentication>
+<password>+0400000000120303000803E8A2C2CA8371E2B44FB8441DA02AA15222CB256DC236F110738B4915035B7C28C1559E1940DCB88270EDA5331883816049</password>
+<server_codepage>&lt;default&gt;</server_codepage>
+<sql_server_database>APPLE</sql_server_database>
+<sql_server_dataserver>SAPBODS</sql_server_dataserver>
+<sql_server_version>Microsoft SQL Server 2012</sql_server_version>
+<use_ssl_encryption>no</use_ssl_encryption>
+<user>bouser</user>
+</DSConfiguration>
+</DSConfigurations>
+
+</DIAttribute>
+<DIAttribute name="enable_data_transfer" value="yes"/>
+<DIAttribute name="import_unknown_type" value="no"/>
+<DIAttribute name="name" value="A1_MSSQL"/>
+<DIAttribute name="pcache_force_utf16" value="no"/>
+</DIAttributes>
+</DIDatabaseDatastore>
+<DITable name="CUSTOMERTESTTABLE" owner="dbo" datastore="A1_MSSQL" database="APPLE" description="" >
+<DIProperties>
+<DIAttribute name="Database_Object_Type" value="TABLE" />
+<DIAttribute name="Table_Type" value="TABLE" />
+<DIAttribute name="Estimated_Row_Count" value="50000" />
+<DIAttribute name="Loader_Is_Template_Table" value="no" />
+<DIAttribute name="db_alias_name" value="dbo" />
+</DIProperties>
+<DIColumn name="CUST_ID" datatype="VARCHAR" size="4" nullable="true" >
+</DIColumn>
+<DIColumn name="CUSTOMER_NAME" datatype="VARCHAR" size="17" nullable="true" >
+</DIColumn>
+<DIColumn name="CITY" datatype="VARCHAR" size="12" nullable="true" >
+</DIColumn>
+<DIColumn name="STATE" datatype="VARCHAR" size="11" nullable="true" >
+</DIColumn>
+<DIColumn name="COUNTRY" datatype="VARCHAR" size="5" nullable="true" Content_Type="COUNTRY" >
+<DIProperties>
+<DIAttribute name="Content_Type" value="COUNTRY"/>
+</DIProperties>
+</DIColumn>
+</DITable>
+<DIFlatFileDatastore name="File_Format_6053" typeId="3" >
+<DISchema>
+<DIElement name="CUST_ID" datatype="VARCHAR" size="4" >
+</DIElement>
+<DIElement name="CUSTOMER_NAME" datatype="VARCHAR" size="17" >
+</DIElement>
+<DIElement name="CITY" datatype="VARCHAR" size="12" >
+</DIElement>
+<DIElement name="STATE" datatype="VARCHAR" size="11" >
+</DIElement>
+<DIElement name="COUNTRY" datatype="VARCHAR" size="5" >
+<DIAttributes>
+<DIAttribute name="Content_Type" value="COUNTRY"/>
+</DIAttributes>
+</DIElement>
+</DISchema>
+<DIAttributes>
+<DIAttribute name="abap_file_format" value="no"/>
+<DIAttribute name="application_type" value=""/>
+<DIAttribute name="cache" value="yes"/>
+<DIAttribute name="column_delimiter" value=","/>
+<DIAttribute name="column_width" value="1"/>
+<DIAttribute name="column_width1" value="4"/>
+<DIAttribute name="column_width2" value="17"/>
+<DIAttribute name="column_width3" value="12"/>
+<DIAttribute name="column_width4" value="11"/>
+<DIAttribute name="column_width5" value="5"/>
+<DIAttribute name="date_format" value="yyyy.mm.dd"/>
+<DIAttribute name="datetime_format" value="yyyy.mm.dd hh24:mi:ss"/>
+<DIAttribute name="ds_configuration_enabled" value="no"/>
+<DIAttribute name="file_format" value="ascii"/>
+<DIAttribute name="file_location" value="local"/>
+<DIAttribute name="file_name" value="CUST.csv"/>
+<DIAttribute name="file_type" value="delimited_file"/>
+<DIAttribute name="locale_codepage" value="&lt;default&gt;"/>
+<DIAttribute name="locale_language" value="&lt;default&gt;"/>
+<DIAttribute name="locale_territory" value="&lt;default&gt;"/>
+<DIAttribute name="name" value="UNNAMED"/>
+<DIAttribute name="number_of_threads" value="&lt;default&gt;"/>
+<DIAttribute name="read_subfolders" value="yes"/>
+<DIAttribute name="reader_capture_data_conversion_errors" value="no"/>
+<DIAttribute name="reader_capture_file_access_errors" value="yes"/>
+<DIAttribute name="reader_capture_row_format_errors" value="yes"/>
+<DIAttribute name="reader_capture_string_truncation_errors" value="no"/>
+<DIAttribute name="reader_log_data_conversion_warnings" value="yes"/>
+<DIAttribute name="reader_log_row_format_warnings" value="yes"/>
+<DIAttribute name="reader_log_warnings" value="yes"/>
+<DIAttribute name="reader_maximum_warnings_to_log" value="-99"/>
+<DIAttribute name="reader_skip_empty_files" value="yes"/>
+<DIAttribute name="reader_skip_error_handling" value="no"/>
+<DIAttribute name="reader_write_error_rows_to_file" value="no"/>
+<DIAttribute name="root_dir" value="C:\Users\bouser03\Documents\FlatFiles"/>
+<DIAttribute name="row_delimiter" value="\n"/>
+<DIAttribute name="skip_row_header" value="yes"/>
+<DIAttribute name="table_weight" value="0"/>
+<DIAttribute name="time_format" value="hh24:mi:ss"/>
+<DIAttribute name="transfer_custom" value="no"/>
+<DIAttribute name="use_root_dir" value="no"/>
+<DIAttribute name="write_bom" value="no"/>
+<DIAttribute name="write_row_header" value="no"/>
+</DIAttributes>
+<DIUIOptions>
+<DIAttribute name="ui_display_name" value="File_Format_6053"/>
+</DIUIOptions>
+</DIFlatFileDatastore>
+<DIDataflow name="New_DataFlow138" typeId="1" >
+<DITransforms>
+<DIFileSource typeId="18" formatName="File_Format_6053" filename="CUST.csv" >
+<DIUIOptions>
+<DIAttribute name="ui_display_name" value="&quot;CUST.csv&quot;(File_Format_6053)"/>
+</DIUIOptions>
+<DIOutputView name="File_Format_6053"  />
+<DIAttributes>
+<DIAttribute name="cache" value="yes"/>
+<DIAttribute name="connection_port" value="no"/>
+<DIAttribute name="file_location" value="local"/>
+<DIAttribute name="name" value="UNNAMED"/>
+<DIAttribute name="reader_filename_col" value="DI_FILENAME"/>
+<DIAttribute name="reader_filename_col_size" value="100"/>
+<DIAttribute name="reader_filename_only" value="no"/>
+<DIAttribute name="reader_include_filename" value="no"/>
+<DIAttribute name="reader_maximum_warnings_to_log" value="-99"/>
+<DIAttribute name="root_dir" value="C:\Users\bouser03\Documents\FlatFiles"/>
+<DIAttribute name="table_weight" value="0"/>
+</DIAttributes>
+</DIFileSource>
+
+<DIQuery typeId="29"  >
+<DIUIOptions>
+<DIAttribute name="ui_acta_from_schema_0" value="File_Format_6053"/>
+</DIUIOptions>
+<DISchema name="Query" >
+<DIElement name="CUST_ID" datatype="VARCHAR" size="4" >
+<DIAttributes>
+<DIAttribute name="ui_mapping_text" value="File_Format_6053.CUST_ID"/>
+</DIAttributes>
+</DIElement>
+<DIElement name="CUSTOMER_NAME" datatype="VARCHAR" size="17" >
+<DIAttributes>
+<DIAttribute name="ui_mapping_text" value="File_Format_6053.CUSTOMER_NAME"/>
+</DIAttributes>
+</DIElement>
+<DIElement name="CITY" datatype="VARCHAR" size="12" >
+<DIAttributes>
+<DIAttribute name="ui_mapping_text" value="File_Format_6053.CITY"/>
+</DIAttributes>
+</DIElement>
+<DIElement name="STATE" datatype="VARCHAR" size="11" >
+<DIAttributes>
+<DIAttribute name="ui_mapping_text" value="File_Format_6053.STATE"/>
+</DIAttributes>
+</DIElement>
+<DIElement name="COUNTRY" datatype="VARCHAR" size="5" >
+<DIAttributes>
+<DIAttribute name="Content_Type" value="COUNTRY"/>
+<DIAttribute name="ui_mapping_text" value="File_Format_6053.COUNTRY"/>
+</DIAttributes>
+</DIElement>
+</DISchema>
+<DISelect>
+<DIProjection>
+<DIExpression isString="true" expr="File_Format_6053.CUST_ID" >
+<COLUMN_REFERENCE  qualifier1="File_Format_6053" column="CUST_ID" />
+</DIExpression>
+<DIExpression isString="true" expr="File_Format_6053.CUSTOMER_NAME" >
+<COLUMN_REFERENCE  qualifier1="File_Format_6053" column="CUSTOMER_NAME" />
+</DIExpression>
+<DIExpression isString="true" expr="File_Format_6053.CITY" >
+<COLUMN_REFERENCE  qualifier1="File_Format_6053" column="CITY" />
+</DIExpression>
+<DIExpression isString="true" expr="File_Format_6053.STATE" >
+<COLUMN_REFERENCE  qualifier1="File_Format_6053" column="STATE" />
+</DIExpression>
+<DIExpression isString="true" expr="File_Format_6053.COUNTRY" >
+<COLUMN_REFERENCE  qualifier1="File_Format_6053" column="COUNTRY" />
+</DIExpression>
+</DIProjection>
+<DIFrom>
+<DITableSpec name="File_Format_6053" />
+</DIFrom>
+</DISelect>
+<DIAttributes>
+<DIAttribute name="distinct_run_as_separate_process" value="no"/>
+<DIAttribute name="group_by_run_as_separate_process" value="no"/>
+<DIAttribute name="join_run_as_separate_process" value="no"/>
+<DIAttribute name="order_by_run_as_separate_process" value="no"/>
+<DIAttribute name="run_as_separate_process" value="no"/>
+</DIAttributes>
+</DIQuery>
+
+<DIDatabaseTableTarget typeID="5" bulkLoader="false" datastoreName="A1_MSSQL" ownerName="dbo" tableName="CUSTOMERTESTTABLE" >
+<DIInputView name="Query"  />
+<DIAttributes>
+<DIAttribute name="connection_port" value="no"/>
+<DIAttribute name="ldr_configuration_enabled" value="yes"/>
+<DIAttribute name="ldr_configurations" hasNestedXMLTree ="true">
+
+<LDRConfigurations>
+<LDRConfiguration database_type="Microsoft_SQL_Server" database_version="Microsoft SQL Server 2012">
+<auto_correct_using_merge>yes</auto_correct_using_merge>
+<bulk_col_delimiter>/127</bulk_col_delimiter>
+<bulk_ldr_all_rows></bulk_ldr_all_rows>
+<bulk_ldr_cleanup>yes</bulk_ldr_cleanup>
+<bulk_ldr_max_errors></bulk_ldr_max_errors>
+<bulk_ldr_rows_per_commit>1000</bulk_ldr_rows_per_commit>
+<enable_partitioning>no</enable_partitioning>
+<ignore_column_case>yes</ignore_column_case>
+<ignore_columns_null>no</ignore_columns_null>
+<ignore_columns_value></ignore_columns_value>
+<loader_auto_correct>no</loader_auto_correct>
+<loader_bulk_load></loader_bulk_load>
+<loader_compare_column>compare_by_name</loader_compare_column>
+<loader_delete_map></loader_delete_map>
+<loader_drop_and_create_table>yes</loader_drop_and_create_table>
+<loader_fl_object_name></loader_fl_object_name>
+<loader_insert_map></loader_insert_map>
+<loader_load_choice>append</loader_load_choice>
+<loader_num_parallel_loaders>1</loader_num_parallel_loaders>
+<loader_overflow_file></loader_overflow_file>
+<loader_post_load1></loader_post_load1>
+<loader_pre_load1></loader_pre_load1>
+<loader_quote_names>0</loader_quote_names>
+<loader_transactional>no</loader_transactional>
+<loader_transactional_order>0</loader_transactional_order>
+<loader_update_key_columns>no</loader_update_key_columns>
+<loader_update_map></loader_update_map>
+<loader_use_user_defined_keys>no</loader_use_user_defined_keys>
+<loader_xact_size>1000</loader_xact_size>
+<mssql_bulk_ldr_mode>append</mssql_bulk_ldr_mode>
+<mssql_bulk_ldr_packet_size>4</mssql_bulk_ldr_packet_size>
+<mssql_ldr_identity_insert>off</mssql_ldr_identity_insert>
+<overflow_file_format>write_data</overflow_file_format>
+<overriding_substitution_parameter_for_tablename></overriding_substitution_parameter_for_tablename>
+<text_delimiter></text_delimiter>
+<use_overflow_file>no</use_overflow_file>
+<use_unicode_varchar>no</use_unicode_varchar>
+<sql_text></sql_text>
+</LDRConfiguration>
+</LDRConfigurations>
+</DIAttribute>
+<DIAttribute name="loader_template_table" value="yes"/>
+<DIAttribute name="name" value="A1_MSSQL"/>
+<DIAttribute name="use_unicode_varchar" value="no"/>
+</DIAttributes>
+</DIDatabaseTableTarget>
+
+</DITransforms>
+<DIAttributes>
+<DIAttribute name="Cache_type" value="pageable_cache"/>
+<DIAttribute name="Parallelism_degree" value="default"/>
+<DIAttribute name="allows_both_input_and_output" value="yes"/>
+<DIAttribute name="dataflow_loader_bulk_load" value="no"/>
+<DIAttribute name="dataflow_loader_commit_size" value="default"/>
+<DIAttribute name="dataflow_loader_row_size_bytes" value="0"/>
+<DIAttribute name="dataflow_number_of_loaders" value="0"/>
+<DIAttribute name="run_once" value="no"/>
+<DIAttribute name="use_dataflow_links" value="no"/>
+<DIAttribute name="use_datastore_links" value="yes"/>
+<DIAttribute name="validation_xform_exists" value="no"/>
+<DIAttribute name="validation_xform_stats" value="no"/>
+</DIAttributes>
+</DIDataflow>
+<DIJob name="New_Job154" typeId="2" >
+<DISteps>
+<DICallStep typeId="1"  calledObjectType="Dataflow" name="New_DataFlow138" >
+</DICallStep>
+</DISteps>
+<DIAttributes>
+<DIAttribute name="job_checkpoint_enabled" value="no"/>
+<DIAttribute name="job_collect_statistics" value="no"/>
+<DIAttribute name="job_collect_statistics_monitor" value="no"/>
+<DIAttribute name="job_create_debug_package" value="no"/>
+<DIAttribute name="job_enable_assemblers" value="yes"/>
+<DIAttribute name="job_enable_audit" value="yes"/>
+<DIAttribute name="job_enable_dataquality" value="yes"/>
+<DIAttribute name="job_export_repo" value="no"/>
+<DIAttribute name="job_export_reports" value="no"/>
+<DIAttribute name="job_isrecoverable" value="no"/>
+<DIAttribute name="job_mode" value="Multi-Process"/>
+<DIAttribute name="job_monitor_sample_rate" value="1000"/>
+<DIAttribute name="job_monitor_timer_rate" value="5"/>
+<DIAttribute name="job_name" value="New_Job154"/>
+<DIAttribute name="job_print_version" value="no"/>
+<DIAttribute name="job_testmode_enabled" value="no"/>
+<DIAttribute name="job_trace_abapquery" value="no"/>
+<DIAttribute name="job_trace_all" value="no"/>
+<DIAttribute name="job_trace_ascomm" value="no"/>
+<DIAttribute name="job_trace_assemblers" value="no"/>
+<DIAttribute name="job_trace_audit" value="no"/>
+<DIAttribute name="job_trace_dataflow" value="yes"/>
+<DIAttribute name="job_trace_idoc_file" value="no"/>
+<DIAttribute name="job_trace_memory_loader" value="no"/>
+<DIAttribute name="job_trace_memory_reader" value="no"/>
+<DIAttribute name="job_trace_optimized_dataflow" value="no"/>
+<DIAttribute name="job_trace_parallel_execution" value="no"/>
+<DIAttribute name="job_trace_rfc_function" value="no"/>
+<DIAttribute name="job_trace_row" value="no"/>
+<DIAttribute name="job_trace_script" value="no"/>
+<DIAttribute name="job_trace_session" value="yes"/>
+<DIAttribute name="job_trace_sql_only" value="no"/>
+<DIAttribute name="job_trace_sqlfunctions" value="no"/>
+<DIAttribute name="job_trace_sqlloaders" value="no"/>
+<DIAttribute name="job_trace_sqlreaders" value="no"/>
+<DIAttribute name="job_trace_sqltransforms" value="no"/>
+<DIAttribute name="job_trace_stored_procedure" value="no"/>
+<DIAttribute name="job_trace_table" value="no"/>
+<DIAttribute name="job_trace_table_reader" value="no"/>
+<DIAttribute name="job_trace_transform" value="no"/>
+<DIAttribute name="job_trace_userfunction" value="no"/>
+<DIAttribute name="job_trace_usertransform" value="no"/>
+<DIAttribute name="job_trace_workflow" value="yes"/>
+<DIAttribute name="job_type" value="batch"/>
+<DIAttribute name="job_use_statistics" value="yes"/>
+<DIAttribute name="locale_codepage" value="&lt;default&gt;"/>
+<DIAttribute name="locale_language" value="&lt;default&gt;"/>
+<DIAttribute name="locale_territory" value="&lt;default&gt;"/>
+</DIAttributes>
+</DIJob>
+<DIProject name="TMPJOB" >
+<DIJobRef name="New_Job154" />
+</DIProject>
+
+</DataIntegratorExport>
