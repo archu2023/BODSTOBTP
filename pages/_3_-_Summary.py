@@ -104,7 +104,7 @@ def create_download_link(
     href = (
     f'<div style="display: inline-flex; align-items: center;margin-bottom: -27px;">'
     f'<a href="data:file/csv;base64,{b64}" download="{filename}" style="font-size: {font_size};">{text}</a>'
-    f'<img src="./app/static/export_icon.png" style="margin-left: 5px; width: {font_size}; height: {font_size};">'
+    f'<img src="./static/export_icon.png" style="margin-left: 5px; width: {font_size}; height: {font_size};">'
     "</div>"
 )
 

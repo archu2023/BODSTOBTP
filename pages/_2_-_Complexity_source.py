@@ -64,21 +64,21 @@ def generate_boxs(tot, val, inval):
             <h2>"""
         + str(tot)
         + """</h2>
-            <img src="./app/static/files.png" alt="Image"style="float:right"><br>
+            <img src="./static/files.png" alt="Image"style="float:right"><br>
             <h6>Total Data Services</h6>
         </div>
         <div id="middlebox" class="infoBox" >
             <h2>"""
         + str(val)
         + """</h2>
-            <img src="./app/static/passed.png" alt="Image"style="float:right"><br>
+            <img src="./static/passed.png" alt="Image"style="float:right"><br>
             <h6>Valid Data Services</h6>
         </div>
         <div id="lastbox" class="infoBox" >
             <h2>"""
         + str(inval)
         + """</h2>
-            <img src="./app/static/failed.png" alt="Image"style="float:right">
+            <img src="./static/failed.png" alt="Image"style="float:right">
             <h6>Invalid Data Services</h6>
         </div>
     </body>"""
@@ -172,7 +172,7 @@ def create_download_link(
     href = (
     f'<div style="display: inline-flex; align-items: center;margin-bottom: -27px;">'
     f'<a href="data:file/csv;base64,{b64}" download="{filename}" style="font-size: {font_size};">{text}</a>'
-    f'<img src="./app/static/export_icon.png" style="margin-left: 5px; width: {font_size}; height: {font_size};">'
+    f'<img src="./static/export_icon.png" style="margin-left: 5px; width: {font_size}; height: {font_size};">'
     "</div>"
 )
 
