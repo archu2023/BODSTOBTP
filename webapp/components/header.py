@@ -6,7 +6,7 @@ def header(current_page):
     with header:
         col1, col2, col3 = st.columns((1.5, 3, 1))
         with col1:
-            st.image('static/Invenics Logo White.png', width=200)
+            st.image('Invenics Logo White.png', width=200)
         if current_page == "Login":
             return
 
