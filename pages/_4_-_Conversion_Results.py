@@ -27,7 +27,8 @@ st.set_page_config(
 show_pages([
     Page('_1_-_Home.py'),
     Page('pages/_2_-_Complexity_Report.py'),
-    Page('pages/_3_-_Conversion_Results.py'),
+    Page("pages/_3_-_Summary.py"),
+    Page('pages/_4_-_Conversion_Results.py'),
     Page('pages/login.py')
 ])
 hide_pages([
@@ -36,7 +37,8 @@ hide_pages([
 
 with open('style/style.css') as f:
     with open('style/style3.css') as f2:
-        st.markdown(f'<style>{f.read()}{f2.read()}</style>', unsafe_allow_html=True)
+            with open("style/conversion_page.css") as f3:
+                st.markdown(f'<style>{f.read()}{f2.read()}{f3.read()}</style>', unsafe_allow_html=True)
 
 
 def get_result():
@@ -65,6 +67,8 @@ def generate_table(df):
                 </thead>
                 <tbody>"""
     for index, row in df.iterrows(): # do not remove index
+        if row['Result'] == 'Failed':
+            row['Result'] = 'Partially Converted'
         complexity_color = "#EC7B34"
         if row['Complexity'] == "Low":
             complexity_color = "#33B469"
@@ -93,20 +97,20 @@ def generate_table(df):
 def main():
 
 
-    headerComponent("3 - Conversion Results")
+    headerComponent("4 - Conversion Results")
     titleComponent("Conversion Results")
 
     cols = ['File Name', 'Complexity', 'Result', 'DI File Name']
     df1 = pd.DataFrame(get_result(), columns=cols)
 
-    col1, col2, col3 = st.columns([1, 4, 1])
+    col1, col2, col3 = st.columns([1, 12, 1])
     with col2:
         st.markdown(generate_table(df1), unsafe_allow_html=True)
 
     st.markdown(f"""<p style='text-align: center; background-color:#ffffff; font-weight:bold; font-size:20px; background: none;'>
         Successfully created files have been downloaded in the '{st.session_state.destination_path}' path.</p>""", unsafe_allow_html=True)
     
-    view_files_button = st.button('VIEW FILES')
+    view_files_button = st.button('View Files')
     if view_files_button:
         # opens file explorer
         os.startfile(st.session_state.destination_path)

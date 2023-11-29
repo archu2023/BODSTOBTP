@@ -16,17 +16,21 @@ st.set_page_config(
     page_icon=icon,
     layout="wide"
 )
-show_pages([
-    Page('_1_-_Home.py'),
-    Page('pages/_2_-_Complexity_Report.py'),
-    Page('pages/_3_-_Conversion_Results.py'),
-    Page('pages/login.py')
-])
+show_pages(
+    [
+        Page("_1_-_Home.py"),
+        Page("pages\\_2_-_Complexity_source.py"),
+        Page("pages\\_3_-_Summary.py"),
+        Page("pages\\_4_-_Conversion_Results.py"),
+        Page("pages\\login.py"),
+    ]
+)
 hide_pages([
     '1 - Home',
-    '2 - Complexity Report',
-    '3 - Conversion Results',
-    'Login'
+    "2 - Complexity source",
+    "3 - Summary",
+    "4 - Conversion Results",
+    "Login"
 ])
 
 with open('style/style.css') as f:

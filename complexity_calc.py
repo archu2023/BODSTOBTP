@@ -97,6 +97,7 @@ def calculate_complexity(content):
         data = [element.items() for element in root.iter(tag_name)]
         data = [dict(x)['name'] for x in data]
         data = set(data)
+        inbuild_function_names_l = [val for val in data if val in IFD.lst]
         inbuilt_function = sum(1 for val in data if val in IFD.lst)
         #Sql Functions
         lst2=['sql']
@@ -154,7 +155,10 @@ def calculate_complexity(content):
                                 all_tags[key_dict].append('Default')
 
             if tag not in all_tags.keys():
-                all_tags[tag] = [val['name']]
+                if 'name' in val:
+                    all_tags[tag] = [val['name']]
+                else:
+                    all_tags[tag] = ['N/A']
             else:
                 all_tags[tag].append(val['name'])
             if 'DataIntegratorExport' in root.tag:
@@ -165,8 +169,13 @@ def calculate_complexity(content):
 
             if 'Job' in tag:
                 job_flag = True
-                job_lst.append(val['name'])
-                all_jobs.append(val['name'])
+                if 'name' in val:
+                    job_lst.append(val['name'])
+                    all_jobs.append(val['name'])
+
+                else:
+                    job_lst.append('N/A')
+                    all_jobs.append('N/A')
                 repo_ver = root.attrib['repositoryVersion']
                 system_ver = root.attrib['productVersion']
                 # with open("test.txt", 'w') as f:
@@ -212,13 +221,28 @@ def calculate_complexity(content):
                                     'ui_acta_from' in value['name'] for value in xml_info['DIAttribute']) > 1
                             if 'Query' in sub_branch.tag or 'Script' in sub_branch.tag:
                                 is_functional_call = any(value == 'FUNCTION_CALL' for value in parse_xml(sub_branch).keys())
+            # if 'Script' in tag:
+            #     transform_lst.append("DIScript")
+            for script_element in root.findall(".//DIScript"):
+
+                attribute_element = script_element.find(".//DIAttribute[@name='ui_display_name']")
+                if attribute_element is not None:
+                    if "DIScript" not in all_tags.keys():
+                        all_tags["DIScript"] = [attribute_element.attrib["value"]]
+                        transform_lst.append("DIScript")
+                    else:
+                        if attribute_element.attrib["value"] not in all_tags["DIScript"]:
+                            all_tags["DIScript"].append(attribute_element.attrib["value"])
+                            transform_lst.append("DIScript")
+
+
 
         num_of_jobs = len(job_lst)
         # num_of_operators = len(transformations_lst)
         # num_of_dataflow = len(dataflow_count_dict)
         dist_operator_list = set(map(str, transform_lst))
         num_dist_operator = len(dist_operator_list)
-        score = return_score(all_tags)
+        score,operators_list = return_score(all_tags)
         effort, coverage = cal_indicative_eff(gen_1, gen_2, cust_op_di_count,num_dist_operator)
 
         if 'DIDataflow' in all_tags.keys():
@@ -257,7 +281,17 @@ def calculate_complexity(content):
         complexity_map = {1: 'Low', 2: 'Medium', 3: 'High'}
         source_complexity_num = max(jb, cf, op)
         source_complexity = complexity_map[source_complexity_num]
-        job_names = ', '.join(all_jobs)
+        all_jobs_with_na = ['N/A' if name == "" else name for name in all_jobs]
+        workflow_name = ','.join(workflow_l)
+        if len(inbuild_function_names_l) != 0:
+            inbuild_function_names = ','.join(inbuild_function_names_l)
+        else:
+            inbuild_function_names = 'Nill'
+        if len(operators_list) != 0:
+            operators_names = ','.join(operators_list)
+        else:
+            operators_name = 'N/A'
+        job_names = ', '.join(all_jobs_with_na)
         workflows = len(workflow_l)
         dataflows = len(data_flow_list)
         if len(data_stores_l) != 0:
@@ -281,13 +315,13 @@ def calculate_complexity(content):
         # else:
         #     complexity = 'No criteria matches'
         return inbuilt_function,sql_function,custom_function,dataintegrator_flag,project_flag,job_flag,\
-               source_complexity,score,job_names,num_dist_operator,num_of_jobs,workflows,data_stores,effort,coverage
+               source_complexity,score,job_names,num_dist_operator,num_of_jobs,workflows,data_stores,effort,coverage,workflow_name,operators_names,inbuild_function_names
 
     except ET.ParseError:
         repo_ver = 'Null'
         system_ver = 'Null'
         all_jobs=['Null']
-        return 'Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null'
+        return 'Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null','Null'
 
 
 def complexity_assessment_report(project_flag,dataintegrator_flag,job_flag):
@@ -306,12 +340,16 @@ def complexity_assessment_report(project_flag,dataintegrator_flag,job_flag):
     return repo_ver, system_ver, job_names, valid_bods, invalid_bods
 
 def return_score(tags):
+    operators = []
     naming_std = sc.naming_conventions
     total_no_obj = 0
     total_obj_score = 0
     for obj_key in tags.keys():
         if obj_key in naming_std.keys():
             # print(obj_key)
+            opera = ['DIProject','DIJob','DIWorkflow','DIDataflow']
+            if obj_key not in opera:
+                operators.append(obj_key)
             num_s_obj = len(tags[obj_key])
             no_s_corrent_obj = 0
             total_no_obj += 1
@@ -324,7 +362,7 @@ def return_score(tags):
         score_naming = str(int((total_obj_score/total_no_obj)*100))
     else:
         score_naming = '0'
-    return score_naming
+    return score_naming,operators
 
 def cal_indicative_eff(eq_gen1,eq_gen2,eq_custo,tot_oprt):
     no_of_gen1_operators = eq_gen1
@@ -339,7 +377,7 @@ def cal_indicative_eff(eq_gen1,eq_gen2,eq_custo,tot_oprt):
     # target_coverage
     indicative_effort = ''
     if target_coverage < 70:
-        indicative_effort = 'High'
+        indicative_effort = 'Large'
     elif 70 <= target_coverage <= 80:
         indicative_effort = 'Medium'
     else:

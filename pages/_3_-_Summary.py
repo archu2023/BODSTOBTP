@@ -4,8 +4,11 @@ import streamlit as st
 from st_pages import Page, show_pages, hide_pages
 from components.header import header as headerComponent
 from streamlit_extras.switch_page_button import switch_page
+from driver import main_prog1
 import pandas as pd
 import base64
+import os
+import time
 
 
 
@@ -51,7 +54,26 @@ source = pd.DataFrame(
 target = pd.DataFrame(
     {"Indicative Effort": ["Completely Migratable", "Partially Migratable", "Needs to be redesigned"], "Data Services": [3, 7, 4]}
 )
+def convert(files:list, path)->list:
+    result = {}
+    percent_complete = 0
+    progress_bar = st.progress(int(percent_complete))
+    for file in files:
+        progress_text = f"Converting {file.get().name}..."
+        progress_bar.progress(int(percent_complete), text=progress_text)
+        file_name = file.get().name.split(".")[0]
+        file_content = file.getContent()
+        try:
+            result[f"{file_name}"] = main_prog1(file_content, path, file_name)
+        except Exception as e:
+            print(e)
+            result[f"{file_name}"] = "Failed"
+        percent_complete += 100/len(files)
+    print(result)
+    st.session_state.result = result
 
+    progress_bar.progress(100, text="Conversion complete.")
+    time.sleep(1)
 def generate_table(df):
     if len(df.index) != 0:
         html_for_the_table = """<head>
@@ -104,7 +126,7 @@ def create_download_link(
     href = (
     f'<div style="display: inline-flex; align-items: center;margin-bottom: -27px;">'
     f'<a href="data:file/csv;base64,{b64}" download="{filename}" style="font-size: {font_size};">{text}</a>'
-    f'<img src="static/export_icon.png" style="margin-left: 5px; width: {font_size}; height: {font_size};">'
+    f'<img src="./app/static/export_icon.png" style="margin-left: 5px; width: {font_size}; height: {font_size};">'
     "</div>"
 )
 
@@ -122,6 +144,10 @@ def main():
         unsafe_allow_html=True,
     )
     summary = st.session_state.summary
+    export_summary = summary[['file_name','Job_name','Complexity','coverage','effort']]
+    export_summary.rename(columns = {'file_name':'File Name','Job_name':'Job Name','Complexity':'Source Complexity','coverage':'Target Coverage',
+                                     'effort':'Indicative Effort'}, inplace = True)
+    export_summary.insert(0,'No',range(1, 1 + len(export_summary)))
     total_xmls,valid,in_valid = st.session_state.xml_counts
     # complexity_source = summary[['Complexity']]
     c_low = len(list(summary[summary['Complexity'] == 'Low'].values))
@@ -129,14 +155,14 @@ def main():
     c_high = len(list(summary[summary['Complexity'] == 'High'].values))
     effort_low = len(list(summary[summary['effort'] == 'Small'].values))
     effort_med = len(list(summary[summary['effort'] == 'Medium'].values))
-    effort_hig = len(list(summary[summary['effort'] == 'High'].values))
+    effort_hig = len(list(summary[summary['effort'] == 'Large'].values))
 
     source = pd.DataFrame(
         {"Complexity": ["High", "Medium", "Low"], "Data Services": [c_high, c_medium, c_low]}
     )
 
     target = pd.DataFrame(
-        {"Indicative Effort": ["Completely Migratable", "Partially Migratable", "Needs to be redesigned"],
+        {"Indicative Effort": ["Small", "Medium", "Large"],
          "Data Services": [effort_low, effort_med, effort_hig]}
     )
 
@@ -204,9 +230,9 @@ def main():
                 width=600,
                 color="Indicative Effort",
                 color_discrete_map={
-                    "Completely Migratable": "#002060",
-                    "Partially Migratable": "#2E76B7",
-                    "Needs to be redesigned": "#00B5D9",
+                    "Small": "#002060",
+                    "Medium": "#2E76B7",
+                    "Large": "#00B5D9",
                 },
             )
             fig.update_layout(showlegend=False, title_x=0.5, plot_bgcolor='rgba(0, 0, 0, 0)',
@@ -217,11 +243,33 @@ def main():
         with column2:
             link_html = f"""
     <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
-        {create_download_link(valid_invalid)}
+        {create_download_link(export_summary)}
     </div></br>
 """
             st.markdown(link_html, unsafe_allow_html=True)
             st.markdown(generate_table(summary), unsafe_allow_html=True)
+            col1, col2, col3 = st.columns([1, 4, 1])
+            with col2:
+                destination_path = st.text_input(
+                    placeholder="Enter the destination for your files",
+                    label=" ",
+                    label_visibility="collapsed",
+
+                )
+
+                if destination_path != "":
+                    if os.path.exists(destination_path):
+                        convert_pressed = st.button("Convert", key="convert")
+                        # col1, col2, col3 = st.columns([1, 4, 1])
+                        if convert_pressed:
+                            st.session_state.destination_path = destination_path
+                            convert(st.session_state.files, destination_path)
+                            show_pages([Page("pages/_4_-_Conversion_Results.py")])
+                            switch_page("4 - Conversion Results")
+                    else:
+                        st.error(
+                            f"'{destination_path}' doesn't exist. Please enter a valid path."
+                        )
             # st.markdown(html_for_the_table, unsafe_allow_html=True)
 
 

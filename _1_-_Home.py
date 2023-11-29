@@ -18,7 +18,7 @@ st.set_page_config(
     page_icon=icon,
     layout="wide",
 )
-show_pages([Page("_1_-_Home.py")])
+# show_pages([Page("_1_-_Home.py")])
 show_pages(
     [
         Page("_1_-_Home.py"),
@@ -58,9 +58,10 @@ def createFileList(files):
 def calculateComplexity(files):
     complexity = []
     summary = []
+    popup = []
     validxml = 0
     in_validxml = 0
-
+    sl = 1
     for file in files:
         # inbuilt_function,sql_function,custom_function,project_flag,dataintegrator_flag,job_flag,source_complexity,score_naming = cc.calculate_complexity(file.getContent())
         # repo_ver, prd_ver, job,valid_bods,invalid_bods = cc.complexity_assessment_report(project_flag,dataintegrator_flag,job_flag)
@@ -79,7 +80,10 @@ def calculateComplexity(files):
             workflows,
             datastores,
             efforts,
-            coverage
+            coverage,
+            workflow_names,
+            operator_names,
+            inbuild_function_names
         ) = cc.calculate_complexity(file.getContent())
         (
             repo_ver,
@@ -124,7 +128,17 @@ def calculateComplexity(files):
                 "coverage" : coverage,
                 "effort" : efforts
             })
+
+            popup.append({
+                "sl.no": sl,
+                "File Name": file.get().name,
+                "DataStores": datastores,
+                "Operators": operator_names,
+                "WorkFlows": workflow_names,
+                "Inbuild Functions": inbuild_function_names
+            })
             validxml += 1
+            sl += 1
         else:
             in_validxml += 1
 
@@ -137,7 +151,7 @@ def calculateComplexity(files):
         # complexity['SQL Functions'] = sql_function
         # complexity['Custom Functions'] = custom_function
         xmls_couts = (validxml + in_validxml, validxml, in_validxml)
-    return complexity, xmls_couts,summary
+    return complexity, xmls_couts,summary,popup
 
 
 def checkFileLimit(files):
@@ -146,7 +160,7 @@ def checkFileLimit(files):
     ("files: " + len(files))
     if len(files) > 10:
         st.warning(
-            "You can only upload 10 files at a time. The first 10 files will be used."
+            "You are limited to process a maximum of 10 files at once. The initial 10 files will be processed by default."
         )
         return files[:10]
     else:
@@ -169,25 +183,27 @@ def main():
         )
         if len(uploaded_files) > 10:
             st.warning(
-                "You can only upload 10 files at a time. The first 10 files will be used."
+                "You are limited to process a maximum of 10 files at once. The initial 10 files will be processed by default."
             )
             uploaded_files = uploaded_files[:10]
 
     if uploaded_files:
         col1, col2, col3 = st.columns((2, 1, 2))
         with col2:
-            next_pressed = st.button("NEXT")
+            next_pressed = st.button("Next")
             if next_pressed:
                 st.session_state.files = None
                 st.session_state.complexity = None
                 st.session_state.complexity_df = None
                 st.session_state.xml_counts = None
                 st.session_state.summary = None
+                st.session_state.popup = None
                 st.session_state.files = createFileList(uploaded_files)
                 (
                     st.session_state.complexity,
                     st.session_state.xml_c,
-                    st.session_state.summary_D
+                    st.session_state.summary_D,
+                    st.session_state.popup_D
                 ) = calculateComplexity(st.session_state.files)
                 # st.session_state.xml_c = (10,5,5)
                 show_pages([Page("pages/_2_-_Complexity_source.py")])
