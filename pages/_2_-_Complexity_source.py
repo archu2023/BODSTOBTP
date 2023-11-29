@@ -20,11 +20,11 @@ st.set_page_config(
 )
 show_pages(
     [
-        Page("Home.py"),
-        Page("pages\\_2_-_Complexity_source.py"),
-        Page("pages\\_3_-_Summary.py"),
-        Page("pages\\_4_-_Conversion_Results.py"),
-        Page("pages\\login.py"),
+        Page("_1_-_Home.py"),
+        Page("pages/_2_-_Complexity_source.py"),
+        Page("pages/_3_-_Summary.py"),
+        Page("pages/_4_-_Conversion_Results.py"),
+        Page("pages/login.py"),
     ]
 )
 hide_pages(["3 - Conversion Results", "Login"])
@@ -258,7 +258,7 @@ def main():
         with col2:
             next_pressed = st.button("NEXT")
             if next_pressed:
-                show_pages([Page("pages\\_3_-_Summary.py")])
+                show_pages([Page("pages/_3_-_Summary.py")])
                 switch_page("3 - Summary")
 if __name__ == "__main__":
     if "files" not in st.session_state:

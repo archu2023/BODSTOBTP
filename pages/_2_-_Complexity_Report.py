@@ -22,10 +22,10 @@ st.set_page_config(
     page_icon=icon,
     layout="wide")
 show_pages([
-    Page('Home.py'),
-    Page('pages\\_2_-_Complexity_Report.py'),
-    Page('pages\\_3_-_Conversion_Results.py'),
-    Page('pages\\login.py')
+    Page('_1_-Home.py'),
+    Page('pages/_2_-_Complexity_Report.py'),
+    Page('pages/_3_-_Conversion_Results.py'),
+    Page('pages/login.py')
 ])
 hide_pages([
     '3 - Conversion Results',
@@ -135,7 +135,7 @@ def main():
                     st.session_state.destination_path = destination_path
                     convert(st.session_state.files, destination_path)
                     show_pages([
-                        Page('pages\\_4_-_Conversion_Results.py')
+                        Page('pages/_4_-_Conversion_Results.py')
                     ])
                     switch_page('4 - Conversion Results')
         else:

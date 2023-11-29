@@ -14,11 +14,11 @@ st.set_page_config(
 )
 show_pages(
     [
-        Page("Home.py"),
-        Page("pages\\_2_-_Complexity_source.py"),
-        Page("pages\\_3_-_Summary.py"),
-        Page("pages\\_4_-_Conversion_Results.py"),
-        Page("pages\\login.py"),
+        Page("_1_-Home.py"),
+        Page("pages/_2_-_Complexity_source.py"),
+        Page("pages/_3_-_Summary.py"),
+        Page("pages/_4_-_Conversion_Results.py"),
+        Page("pages/login.py"),
     ]
 )
 # with open("style/destination_complexity.css") as f3:
