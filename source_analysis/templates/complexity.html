@@ -1,0 +1,221 @@
+<style>
+.popup-content {
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  /* Other styling properties */
+}
+</style>
+
+{% extends "base.html" %} {% block content%} {% load static %} {% comment %}
+<head> </head> {% endcomment %}
+<body>
+  <div class="common-text">
+    <p class="complexity first-line">
+      Data Services to Data Intelligence Migration Platform
+    </p>
+    <p class="complexitysecond-line">Data Services Diagnosis Report</p>
+    <!-- <p class=".complexity second-line">Data Services Diagnosis Report</p> -->
+  </div>
+  <div class="container total">
+    <div
+      class="sub-container data-item ml-3 mr-5"
+      style="background-color: #edb656a3; border-radius: 10px"
+    >
+      <p class="value">{{total_objects}}</p>
+      <div class="icon-container">
+        <div class="icon">
+          <img src="{% static 'files.png' %}" alt="Icon" />
+        </div>
+      </div>
+      <p class="text">Total Data Service Objects</p>
+    </div>
+    <div
+      class="sub-container data-item ml-6 mr-5"
+      style="background-color: #c8e6c9; border-radius: 10px"
+    >
+      <p class="value">{{total_valid_objects}}</p>
+      <div class="icon-container">
+        <div class="icon">
+          <img src="{% static 'passed.png' %}" alt="Icon" />
+        </div>
+      </div>
+      <p class="text">Total Data Service Objects</p>
+    </div>
+    <div
+      class="sub-container data-item ml-4 mr-5"
+      style="background-color: #ffcdd2; border-radius: 10px"
+    >
+      <p class="value">{{total_invalid_objects}}</p>
+        <div class="icon-container">
+          <div class="icon">
+            <img src="{% static 'failed.png' %}" alt="Icon" />
+          </div>
+        </div>
+      <p class="text">Total Data Service Objects</p>
+    </div>
+  </div>
+  <div>
+    <div class="d-flex flex-row justify-content-end mb-2 mt-3">
+      <button id="ExportPdfButton">Export to PDF</button>
+    </div><br>
+        {% comment %} <script>
+          function downloadHTML() {
+            // Get the content-to-export div
+            const contentToExport = document.getElementById("content-to-export");
+
+            // Create a new div to copy the content
+            const exportContainer = document.createElement("div");
+            exportContainer.appendChild(contentToExport.cloneNode(true));
+
+            // Get the outer HTML of the new div
+            const htmlContent = exportContainer.innerHTML;
+
+            // Create a Blob and download the HTML
+            const blob = new Blob([htmlContent], { type: "text/html" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "page.html";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }
+        </script> {% endcomment %}
+      
+    <div class="table-container data-table-container"
+      style="border-radius: 10px; overflow: hidden; overflow-x: auto; overflow-y: auto">
+      <table class="data-table table-container" id="data-table" style="border-radius: 10px">
+      <thead>
+        <tr>
+          <th>Sl.No</th>
+          <th>File Name</th>
+          <th>Job Name</th>
+          <th>Operators Count</th>
+          <th>Job Count</th>
+          <th>Inbuilt Functions Count</th>
+          <th>Custom Function Count</th>
+          <th>Workflow</th>
+          <th>Datastores</th>
+          <th>SQL Functions Count</th>
+          <th>Code Quality %</th>
+          <th>Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in data %}
+        <tr>
+          <td>{{ item.sl_no }}</td>
+          <td>{{ item.file_name }}</td>
+          <td>{{ item.Job_name }}</td>
+          <td>{{ item.Operators_Count }}</td>
+          <td>{{ item.Job_Count }}</td>
+          <td>{{ item.Inbuilt_Functions }}</td>
+          <td>{{ item.Custom_Functions }}</td>
+          <td>{{ item.workflow }}</td>
+          <td>{{ item.datastore }}</td>
+          <td>{{ item.Sqlfunction_count }}</td>
+          <td>{{ item.Score }}</td>
+          <td>{{ item.Complexity }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+      </div>
+      <div class="popup-container" id="popupContainer">
+        <div class="popup-content" id="popupContent">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <div id="popupContentDetails"></div>
+        </div>
+        </div>
+    <br>
+    <a href="{% url 'summary' %}" class="next-button">Next</a>
+  </div>
+    <script>
+      var popupContext = {{ popup|safe }};
+      console.log(popupContext)
+      document.getElementById('ExportPdfButton').addEventListener('click', function () {
+        // Options for html2pdf
+        const options = {
+            margin: 10,
+            filename: 'complexity_table_file.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'mm', format: 'a3', orientation: 'landscape' }
+        };
+ 
+        // Use html2pdf to generate PDF from the current page
+        html2pdf().from(document.getElementById('data-table')).set(options).save();
+    });
+    function toggleNav() {
+      var sidenav = document.getElementById("mySidenav");
+      var body = document.body;
+      var header = document.querySelector("header");
+
+      if (sidenav.style.width === "250px") {
+        sidenav.style.width = "0";
+        body.classList.remove("sidenav-opened");
+        header.style.width = "100%"; /* Set header to full width */
+      } else {
+        sidenav.style.width = "250px";
+        body.classList.add("sidenav-opened");
+        header.style.width =
+          "calc(100% - 250px)"; /* Adjust header width for side nav */
+      }
+    }
+    function navigateTo(page) {
+      window.location.href = page;
+    }
+    function navigateToSummary() {
+      window.location.href = "summary.html";
+    }
+    function openPopup(fileName, operatorsCount, workflows, inbuiltFunctions, datastores, popupContext) {
+      var popupContentDetails = document.getElementById('popupContentDetails');
+      console.log(popupContext);
+  
+      // Find the entry in popupContext where the filename matches
+      var matchingEntry = popupContext.find(entry => entry.File_Name === fileName);
+  
+      if (matchingEntry) {
+          popupContentDetails.innerHTML = `
+              <p style="text-align: center; font-weight: bold;">${fileName}</p>
+              <ul style="list-style-type: disc; padding-left: 0px; text-align: left; margin-top: 10px;">
+                <li><b>Datastores:</b> ${matchingEntry.DataStores}</li>
+                  <li><b>Operators:</b> ${matchingEntry.Operators}</li><br>
+                  <li><b>Workflows:</b> ${matchingEntry.WorkFlows}</li>
+                  <li><b>Inbuilt Functions:</b> ${matchingEntry.Inbuild_Functions}</li>
+              </ul>
+          `;
+  
+          var popupContainer = document.getElementById('popupContainer');
+          popupContainer.style.display = 'block';
+      } else {
+          console.log('No matching entry found for filename:', fileName);
+          // You may want to handle this case differently, depending on your requirements
+      }
+  }
+  
+  function closePopup() {
+      var popupContainer = document.getElementById('popupContainer');
+      popupContainer.style.display = 'none';
+  }
+  
+  document.addEventListener('DOMContentLoaded', function () {
+      var rows = document.querySelectorAll('.data-table tbody tr');
+  
+      rows.forEach(function (row) {
+          row.addEventListener('click', function () {
+              var fileName = row.querySelector('td:nth-child(2)').innerText;
+              var operatorsCount = row.querySelector('td:nth-child(4)').innerText;
+              var workflows = row.querySelector('td:nth-child(8)').innerText;
+              var inbuiltFunctions = row.querySelector('td:nth-child(6)').innerText;
+              var datastores = row.querySelector('td:nth-child(9)').innerText;
+  
+              openPopup(fileName, operatorsCount, workflows, inbuiltFunctions, datastores, popupContext);
+          });
+      });
+  });
+  
+    </script>
+</body>
+{% endblock %}

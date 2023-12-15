@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        {% comment %} @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+        html, body, [class*="css"] {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+            background: none;
+            margin: 0px;
+        }
+        h3{
+            margin: 0px;
+        }
+        h5{
+            margin: 0px;
+        }
+        .htmlTableContainer table {
+            width: 73%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            max-height: 350px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            max-height: 320px;
+            overflow-y: scroll;
+            position: relative;
+            border: solid 1px rgba(49, 51, 63, 0.2);
+            border-radius: 5px;
+            overflow-x: auto;
+}
+
+
+/* Style for table headers */
+.htmlTableContainer th {
+    background-color: #161F27;
+    padding: 5px !important;
+    text-align: center;
+    border: 1px solid #686C71;
+    font-weight: normal;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    padding: 10px;
+
+}
+
+/* Style for table cells */
+.htmlTableContainer td {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+
+}
+
+
+/* Style for alternate rows */
+.htmlTableContainer tbody tr:nth-child(odd) {
+    background-color: #C8E6C9 ;
+}
+
+/* Style for the header row */
+.htmlTableContainer thead tr {
+    background-color: #EEF8EE;
+    color: white;
+    font-size: medium;
+}
+        /* Style for logos in the file name column */
+        .logoInFileName {
+            width: 32px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-top: 0px;
+        } {% endcomment %}
+    </style>
+</head>
+<body>
+{% block content %}
+    <h1 style='text-align: center; font-size: 36px; padding: 0; background-color:#ffffff; color:#000000;background: none;'>
+        Data Services to Data Intelligence Migration Platform</h1>
+<h5 style='text-align: center; font-size: 16px; padding-top: 5px; color: #5A5A5A;font-weight:500;background: none'>
+    Speed up your migration process from SAP BODS to SAP Data Intelligence.<br>
+    Convert your SAP BODS XML Files into JSON Files for SAP Data Intelligence.</h5>
+<h3 style='text-align: center; padding-top: 5px; color: #000000;background: none'>Conversion Results</h3>
+
+<div class="data-tab-container"
+    style="overflow-x: auto; overflow-y: auto">
+    <table class="dynamic-table data-tab-container">
+        <thead>
+            <tr>
+            <th>BODS File Name</th>
+            <th>Complexity</th>
+            <th>Result</th>
+            <th>DI File Name</th>
+            </tr>
+        </thead>
+            <tbody>
+            <!-- Table rows will be dynamically generated here -->
+            {% for i in data %}
+            <tr>
+                <td>{{i.file_name}}</td>
+                <td>{{i.complexity}}</td>
+                <td>{{i.result}}</td>
+                <td>{{i.di_filename}}</td> 
+            </tr>  
+            {% endfor %}
+            </tbody>
+    </table>
+</div><br>
+<p style='margin-bottom: 5px;padding-left: 250px; padding-right:250px ; text-align: center; background-color:#ffffff; font-weight:bold; font-size:20px; background: none;'>
+    Successfully created files have been downloaded in the '{{user_path}}' path.</p>
+<button id="downloadButton" onclick="downloadHTML()">View Files</button>
+
+<script>
+    function downloadHTML() {
+        const htmlContent = document.documentElement.outerHTML;
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'beautiful_table_page.html';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>
+{% endblock %}
+</body>
+</html>

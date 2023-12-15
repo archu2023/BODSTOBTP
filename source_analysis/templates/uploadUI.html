@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="common-text">
+
+  <p class="first-line">SAP BODS to SAP DI Migration Platform</p>
+
+  <p class="second-line grey-text">Speed up your migration process from SAP BODS to SAP Data Intelligence.</p>
+
+  <p class="third-line grey-text">Convert your SAP BODS XML Files into JSON Files for SAP Data Intelligence.</p>
+
+</div>
+    <h1>Upload files</h1>
+ 
+ 
+ 
+    <!-- <div id="file-list" class="mt-3"></div> -->
+ 
+    <form class="form" method="POST" enctype="multipart/form-data" id="uploadForm" action="{% url 'home'%}" >
+      <!-- <div class="center-content"> -->
+        {% csrf_token %}
+       
+ 
+        <div class="d-flex justify-content-between">
+          <div class="content-container" >
+              <!-- Bootstrap icon -->
+              <i class="bi bi-cloud-arrow-up larger-icon mb-3"></i>
+              <p class="pt-3">
+                  Drag and drop files here<br>
+                  <span class="colored-text">Limit 200MB per file • XML</span>
+              </p>
+ 
+              <!-- File input container -->
+              <div class="file-input-container">
+                  <p id="fileNames"></p> <!-- New element to display file names -->
+                  <label for="fileInput" class="custom-upload-btn" >Browse files</label>
+                  <!-- File Upload Button (hidden)  onclick="event.stopPropagation();"  -->
+                  <input type="file" id="fileInput" multiple name="featured_images" >
+              </div>
+          </div>
+      </div>
+      <div id="file-list" class="mt-3"></div>
+      <br>
+        <input type="submit" value="Next" class="custom-button1" style="     min-width: 150px;
+        padding: 8px 57px;
+        background-color: #408c3c; 
+        color: #fff; 
+        border: none;
+        border-radius: 40px; 
+        cursor: pointer;
+        font-size: 18px;  background-color: #388e3c;">
+    <!-- </div> onclick="event.stopPropagation();"  -->
+    </form>
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function () {
+            var fileInput = document.getElementById('fileInput');
+            var fileListContainer = document.getElementById('file-list');
+            //var fileListContainer = document.getElementById('fileListContainer'); // Use the new container ID
+            var uploadForm = document.getElementById('uploadForm');
+            var uploadButton = document.getElementById('uploadButton');
+            // Clear previous file list
+            fileListContainer.innerHTML = '';
+   
+            for (var i = 0; i < fileInput.files.length; i++) {
+                var fileName = fileInput.files[i].name;
+   
+                var listItem = document.createElement('div');
+                //listItem.classList.add("file-info-container");
+                //listItem.className = 'd-flex justify-content-between align-items-center mb-2';
+   
+                // Add BODS text
+                var bodsText = document.createElement('span');
+                bodsText.textContent = 'BODS';
+                bodsText.style.marginRight = '100px'; // Add right margin for spacing
+                listItem.appendChild(bodsText);
+   
+                // Add fileName
+                var fileNameElement = document.createElement('span');
+                fileNameElement.textContent = fileName;
+                fileNameElement.style.marginRight = '100px';
+                listItem.appendChild(fileNameElement);
+   
+                // Add file size
+                var fileSizeElement = document.createElement('span');
+                var fileSize = formatFileSize(fileInput.files[i].size);
+                fileSizeElement.textContent = fileSize;
+                fileSizeElement.style.marginRight = '100px';
+                listItem.appendChild(fileSizeElement);
+   
+                // Remove icon
+                // var removeIcon = document.createElement('i');
+                // removeIcon.className = 'bi bi-x cursor-pointer';
+                // removeIcon.setAttribute('data-index', i);
+                // removeIcon.addEventListener('click', function (e) {
+                //     var index = e.target.getAttribute('data-index');
+                //     fileListContainer.removeChild(fileListContainer.childNodes[index]);
+   
+                //     var filesArray = Array.from(fileInput.files);
+                //     filesArray.splice(index, 1);
+                //     fileInput.files = new FileList(...filesArray);
+   
+                //     updateFileListDisplay();
+                // });
+   
+                // Custom styles for the cross icon
+                // removeIcon.style.color = 'black';
+                // removeIcon.style.transition = 'color 0.3s';
+   
+                // Hover effect
+                // removeIcon.addEventListener('mouseenter', createHoverEffect(removeIcon, 'red'));
+   
+                // Reset color on mouse leave
+                // removeIcon.addEventListener('mouseleave', createHoverEffect(removeIcon, 'black'));
+   
+                // listItem.appendChild(removeIcon);
+   
+                fileListContainer.appendChild(listItem);
+            }
+   
+            // Show the form if at least one file is uploaded
+            if (fileInput.files.length > 0) {
+                uploadForm.style.display = 'block';
+                uploadButton.style.display = 'block';
+            } else {
+                uploadForm.style.display = 'none';
+                uploadButton.style.display = 'none';
+            }
+   
+            // Function to create a closure for the hover effect
+            function createHoverEffect(icon, hoverColor) {
+                return function () {
+                    icon.style.color = hoverColor;
+                };
+            }
+   
+            // Function to format file size in human-readable format
+            function formatFileSize(size) {
+                if (size === 0) return '0 Bytes';
+                var units = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                var i = parseInt(Math.floor(Math.log(size) / Math.log(1024)));
+                return Math.round(size / Math.pow(1024, i), 2) + ' ' + units[i];
+            }
+        });
+   
+        // Change the text on the upload button to "Next"
+        document.getElementById('uploadButton').value = 'Next';
+   
+        function redirectToNextPage() {
+            // For now, simply redirecting to another page
+            window.location.href = "complexity.html";
+            return false; // Prevents the form from submitting
+        }
+    </script>
+ 
+{% endblock %}
+ 

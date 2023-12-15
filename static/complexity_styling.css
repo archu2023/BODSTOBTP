@@ -1,0 +1,367 @@
+[3:29 PM] Nagulesh B
+/* .common-text {
+    background-color: #ffffff;
+    padding: 5px;
+    text-align: center; /* Center-align text
+    font-size: 16px;
+    margin-bottom: 2px;
+    /* margin-top: 10px;
+   }
+   .first-line {
+    font-size: 30px; /* Adjust the font size as needed
+    font-weight: bold;
+    margin-top: 80px;
+   }
+   /* Negative margin for the second line to reduce space
+   .second-line {
+    margin-top: -10px;
+    font-size: 30px !important; /* Adjust the margin to decrease space between lines
+   }
+   .third-line {
+   margin-top: -15px;
+   }
+   .grey-text {
+    color: #555; /* Adjust the color as needed
+   } */
+.complexity:first-line {
+  font-size: 30px; /* Adjust the font size as needed */
+  margin-top: 80px;
+  color:#161F27;
+  margin-top: 80px;
+  font-family: 'Source Sans Pro', sans-serif !important;
+}
+.complexitysecond-line {
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif !important;
+  margin-top: -10px;
+}
+   
+   /* Center-align the content within the main section */
+main {
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif; /* Use Source Sans Pro */
+  font-weight: 500;
+}    
+   /* Optionally, you can style the h1 element */
+main h1 {
+  color: #333; /* Set your desired text color */
+  font-family: 'Source Sans Pro', sans-serif; /* Use Source Sans Pro */
+  font-weight: 550;
+}
+   /* Style for the custom button container */
+   /* Style for the custom button container */
+   /* .custom-upload-btn-container {
+     display: inline-block;
+     margin-right: 10px; /* Adjust the margin as needed
+   }
+   /* Style for the custom button
+   .custom-upload-btn {
+     display: inline-block;
+     padding: 10px 20px;
+     background-color: #4CAF50;
+     color: white;
+     cursor: pointer;
+     border: none;
+     border-radius: 20px;
+   }
+   /* Style for the visual container
+     .content-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         text-align: left; /* Align text to the left within the container
+         padding: 10px;
+         /* border: 1px solid #ccc; Add a border for visualization
+         border-radius: 10px;
+         cursor: pointer;
+         background-color:#C8E6C9; /* Set the background color
+         max-width: 800px; /* Set the maximum width as per your requirement
+         margin: 0 auto; /* Center the container by setting left and right margins to auto
+       }
+   
+       /* Style to hide the default file input button
+       #fileInput {
+           display: none;
+       }
+       /* Style to display text and button side by side
+       .content-container p,
+       .content-container .custom-upload-btn {
+           display: inline-block;
+           vertical-align: top; /* Align elements to the top of the line
+           margin-right: 100px; /* Adjust the margin as needed for a larger gap
+           margin-left: 30px;
+         }
+       /* Style for the colored text inside the container
+       .colored-text {
+                 color: #A9A9A9; /* Set your desired color
+             }
+       /* Style to move the button to the right
+       .content-container .custom-upload-btn {
+           float: right;
+           position: center;
+           margin-right: 0; /* Remove margin to eliminate the gap on the right */
+           /* margin-top: 0;
+           margin-bottom: 0;
+       }
+       * Style for the Bootstrap icon
+     .bi-cloud-arrow-up {
+         color: #A9A9A9; /* Set the color of the icon
+     }
+   
+     .larger-icon {
+         font-size: 50px;
+     } */
+.data-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+.container{
+  display: flex;
+  justify-content: space-between; /* Distribute space between containers */
+  align-items: center;
+  margin-top: 30px;
+  margin-left: -10px;
+}
+.data-item {
+  width: calc((800px - 50px) / 3);
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin-left: 20px;
+  background-color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  min-height: 100px; /* Set a minimum height for the container */
+}    
+.sub-container1 {
+  /* Distribute available space equally */
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin-left: 20px; /* Adjust the margin as needed */
+  overflow-y: auto;
+  max-width: calc((100% - 50px) / 3);
+}
+.bg-color-1 {
+  background-color: #edb656a3 ;
+  border-radius: 10px;
+}    
+.bg-color-2 {
+  background-color: #C8E6C9 ;
+  border-radius: 10px;
+}  
+.bg-color-3 {
+  background-color: #FFCDD2 ;
+  border-radius: 10px;
+}    
+.total {
+  display: inline-flex;
+  justify-content: space-around;    
+}
+.sub-containersize {
+  width: 400px; /* Adjust the width as needed */
+  height: 40px; /* Adjust the height as needed */  
+}
+.value {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.icon-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.icon {
+  width: 50px; /* Adjust the width of the icon container */
+  height: 50px; /* Adjust the height of the icon container */
+}
+.icon img {
+  width: 100%;
+  height: auto;
+}    
+.text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+  color: #555;
+  text-align: center; /* Center the text at the bottom */
+}
+.data-table-container {
+  max-height: 275px; /* Set a maximum height for the container to enable scrolling */
+  overflow-y: auto; /* Add a vertical scrollbar when needed */
+   
+}
+.table-container {
+  margin-top: 30px;
+  margin: 0 auto;
+  border-radius: 36px;
+}
+.table_radius{
+  border-radius: 10px !important;
+   
+}
+.data-table {
+  min-width: 900px;/*Set your desired width */ */
+  border-collapse: collapse;
+  margin-top: 20px; /* Adjust the margin as needed */
+  border-radius: 36px;
+}
+   
+.data-table th,
+.data-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}  
+.data-table th {
+  background-color: black; /* Set the background color for the table header */
+  color: white; /* Set the text color for the table header */
+}
+.data-table tbody tr:nth-child(odd) {
+  background-color: #f3f3f3; /* Color for odd rows */
+  align-content: center;
+}
+.data-table tbody tr:nth-child(even) {
+  background-color: #c6f3c9; /* Color for even rows */
+  align-content: center;
+}
+.data-item {
+  min-width: 290px !important;
+  min-height: 100px;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin-left: 20px; /* Adjust the margin between containers */
+  background-color: #f0f0f0;
+  position: relative;
+}
+   /* .center-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh; /* Adjust the height if needed */
+    */
+    /* Center the table horizontally */
+.table-container {
+  margin: 0 auto;
+}
+   
+/* Center the button horizontally */
+.center-container {
+  text-align: center;
+  margin-top: 10px; /* Adjust the margin as needed */
+}
+/* Styles for the custom button
+   .custom-button {
+     min-width: 188px;
+     max-width: 196px;
+     padding: 10px; /* Adjust the padding as needed
+     background-color: #389f3c; /* Dark green background color
+     color: #fff; /* White text color
+     border: none;
+     border-radius: 20px; /* Add rounded corners
+     cursor: pointer;
+    } */
+   
+   /* .custom-button:hover {
+     background-color: #45a049; /* Darken the background color on hover
+    }
+   /*.export-link {
+     margin-left: 10px; /* Adjust the margin as needed to separate buttons/links */
+     /* min-width: 80px; /* Set your desired width */
+     /* padding: 10px; /* Adjust the padding as needed */
+     /* background-color: #0b130c; /* Dark green background color */
+     /* color: #fff; /* White text color */
+     /* text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     border-radius: 5px; Add rounded corners
+   }  */
+   /* .center-container {
+     text-align: right;
+   } */
+   
+   /* .export-link {
+     margin-right: 100px;
+     padding: 10px;
+     color: #333;
+     text-decoration: none;
+     display: flex;
+     border-radius: 5px;
+     background-color: transparent;
+   
+     float: right; /* Float the export link to the right
+   } */
+   /* .export-link img {
+     width: 20px; /* Adjust the width of the icon
+     height: 20px; /* Adjust the height of the icon
+     margin-right: 5px; /* Adjust the margin as needed
+     margin-left: 0px;
+   } */
+   
+   /* .export-link:hover {
+     background-color: #f5f5f5; /* Lighten the background color on hover
+   } */
+   
+   /* .export-link-between {
+     position: absolute;
+     top: 10px; /* Adjust the top position as needed  
+     right: 20px; /* Adjust the right position as needed  
+     padding: 5px; /* Adjust the padding as needed
+     font-size: 14px; /* Adjust the font size as needed
+     color: #333;
+     text-decoration: none;
+     display: inline-block;
+     border-radius: 5px;
+     background-color: transparent;
+     border: 1px solid #ddd;
+   } */
+   .table-container {
+    position: relative;
+  }
+ 
+  .popup-container {
+    display: none;
+    position: fixed;
+    top: 70%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: left;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}

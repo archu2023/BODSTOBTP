@@ -1,0 +1,575 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source Sans Pro');
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+ 
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+    background-color: #f3f3f3;
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: #161F27;
+   
+}
+li {
+    list-style: none;
+    padding: 0px 8px;
+    margin: 2px 16px;
+    font: 16px;
+    height: 32px;
+    width: 304px;
+   
+}
+ul li:hover a{
+    color:rgb(4, 176, 24) ;
+   
+   
+}
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: left;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+}
+/* Layout skeleton */
+ 
+.wrapper {
+    align-items: stretch;
+    display: flex;
+    width: 100%;
+    background-color: #f3f3f3;
+}
+#sidebar {
+    max-width: 264px;
+    min-width: 264px;
+    transition: all 0.35s ease-in-out;
+    border: 1px solid #e3e7ee;
+    box-sizing: border-box;
+    z-index: 1111;
+    background-color: #f0f2f6;
+}
+/* #sidebar-button:hover {
+    background-color: #45a049;
+} */
+ 
+/* Sidebar collapse */
+ 
+#sidebar.collapsed {
+    margin-left: -264px;
+}
+ 
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+}
+ 
+.sidebar-logo {
+    padding: 25px 15px;
+    top:5px;
+    position:relative;
+    font-size:25px;
+    margin-left:20px;
+}
+ 
+.sidebar-logo a {
+    color: #161F27;
+    font-size: 20px;
+    font-weight: 600;
+    position: center;
+   
+}
+.data-tab-container{
+    max-height: 200px;
+    overflow-y: auto;
+}
+ 
+.table-container {
+    position: relative;
+}
+ 
+/* .sidebar-nav {
+    padding: 0;
+} */
+ 
+/*.sidebar-header {
+    color: yellow;
+    font-size: 10px;
+    padding: 25px 25px 5px;
+}
+ 
+a.sidebar-link {
+    padding: 10px 25px;
+    color: red;
+    position: relative;
+    display: block;
+    font-size: 15px;
+}
+ 
+.sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 1.5px 1.5px 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}*/
+.content {
+    flex: 1;
+    max-width: 100vw;
+    width: 100vw;
+}
+.nav-header{
+    background-color: #161F27;
+    color: #fff;
+    min-height: 74px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+   
+}
+.logo {
+    display: flex;
+    align-items: left;
+    margin-left: -0.85rem;
+    height: 50px;
+    width:200px;
+   
+}
+.logo img {
+    width: 200px; /* Adjust the width as needed */
+    height: auto;
+    margin-right: 10px; /* Add some spacing between the logo and text */
+    /*position:absolute;*/
+}
+.login-container {
+    align-items: center;
+    position: relative;
+    text-align: right;
+    margin-right: 82px;
+}
+.login-container2 {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: right !important;
+    margin-left: 1%;
+    min-width: 100%;
+   
+}
+.login-button {
+    background-color: #388e3c;
+    color: #fff;
+    padding: 15px 45px;
+    border: none;
+    border-radius: 30px; /* Adjust the border-radius to change the button shape */
+    cursor: pointer;
+    font-size: 16px;
+    margin-right:0px;
+}
+.login-button:hover {
+    background-color: #45a049;
+}
+.guest-text {
+    margin-right: 15px; /* Add spacing between "Guest" and the button */
+}
+.common-text {
+    background-color: #f3f3f3;
+   padding: 5px;
+   text-align: center; /* Center-align text */
+   font-size: 16px;
+   margin-bottom: 2px;
+}
+.first-line {
+   font-size: 35px; /* Adjust the font size as needed */
+   font-weight: bold;
+   margin-top: 4px;
+}
+  /* Negative margin for the second line to reduce space */
+.second-line {
+   margin-top: -25px; /* Adjust the margin to decrease space between lines */
+}
+.third-line {
+ margin-top: -15px;
+}
+.grey-text {
+   color: #555; /* Adjust the color as needed */
+}
+/* Center-align the content within the main section */
+main {
+    text-align: center;
+    font-family: 'poppins', sans-serif; /* Use Source Sans Pro */
+    font-weight: 500;
+}    
+/* Optionally, you can style the h1 element */
+main h1 {
+    color: #333; /* Set your desired text color */
+    font-family: 'poppins', sans-serif; /* Use Source Sans Pro */
+    font-weight: 550;
+}
+.row {
+    position: relative;
+    justify-content: space-between;
+    padding-left: 60px;
+    padding-right: 75px;
+}
+/* Style for the custom button container */
+.custom-upload-btn-container {
+    display: inline-block;
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+/* Style for the custom button */
+.custom-upload-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+}
+/* Style for the visual container */
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left; /* Align text to the left within the container */
+    padding: 10px;
+    /* border: 1px solid #ccc; Add a border for visualization */
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #e1ebf8; /* Set the background color */
+    max-width: 800px; /* Set the maximum width as per your requirement */
+    margin: 0 auto; /* Center the container by setting left and right margins to auto */
+}  
+/* Style to hide the default file input button */
+#fileInput {
+    display: none;
+}
+/* Style to display text and button side by side */
+.content-container p,.content-container .custom-upload-btn {
+    display: inline-block;
+    vertical-align: top; /* Align elements to the top of the line */
+    margin-right: 100px; /* Adjust the margin as needed for a larger gap */
+    margin-left: 30px;
+}
+/* Style for the colored text inside the container */
+.colored-text {
+    color: #A9A9A9; /* Set your desired color */
+}
+/* Style to move the button to the right */
+.content-container .custom-upload-btn {
+    float: right;
+    position: center;
+    margin-right: 0; /* Remove margin to eliminate the gap on the right */
+    /* margin-top: 0;
+    margin-bottom: 0; */
+}
+/* Style for the Bootstrap icon */
+.bi-cloud-arrow-up {
+    color: #A9A9A9; /* Set the color of the icon */
+}
+.larger-icon {
+    font-size: 50px;
+}
+.file-info-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+.file-info-container p {
+    margin-right: 0; /* Adjust the margin as needed */
+    display: inline-block;
+}
+.file-input-container {
+    flex: 1;
+    margin-left: 10px; /* Adjust the margin as needed */
+}
+.file-info-container p:empty {
+    display: none;
+}
+.file-info-container1 {
+    /* Add your styling for the container here */
+    display: inline-flex; /* or inline-flex, depending on your preference */
+    margin-right: 50px; /* Adjust the margin as needed for spacing between items */
+    margin-left: 50px;
+    padding-right: 20px !important;
+}
+/* .logo {
+    Add styling for your logo
+    Example:
+    width: 100px;
+    height: 50px;
+} */
+/* .buttons { */
+    /* Add styling for the buttons container */
+    /* Example: */
+    /* display: flex; */
+    /* gap: 10px; */
+/* } */
+/* .login-button { */
+    /* Add styling for the buttons */
+    /* Example: */
+    /* padding: 8px 15px; */
+    /* background-color: #3498db; */
+    /* color: white; */
+    /* border: none; */
+    /* border-radius: 4px; */
+    /* cursor: pointer; */
+/* } */
+/* .nav-header { */
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* padding: 10px; */
+    /* background-color: #f2f2f2; */
+/* } */
+.row{
+    justify-content: space-around;
+}
+/* Basic table styling */
+.data-tab-container{
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: auto;
+  }  
+.table-container {
+    position: relative;
+}
+.dynamic-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.dynamic-table th,.dynamic-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    margin-left: 100px;  
+}
+.dynamic-table tbody tr:nth-child(odd) {
+    background-color: #c6f3c9; /* Color for odd rows */
+    align-content: center;
+}
+.dynamic-table tbody tr:nth-child(even) {
+    background-color: #f3f3f3; /* Color for even rows */
+    align-content: center;
+}
+/* .dynamic-table td {
+    background-color: #c6f3c9;
+    align-content: center;
+}  */
+.dynamic-table th {
+    background-color: black;
+    color: white;
+}
+.summarytable{
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+.summaryfirstline{
+    font-size: 35px; /* Adjust the font size as needed */
+   font-weight: bold;
+   margin-top: 4px;
+}
+.summarysecondline{
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: -20px;
+}    
+.client{
+    color: darkblue;
+    font-size: 20px;
+    display: flex;    
+}
+/* .combine {
+    display: flex;
+    justify-content: space-between;
+} */
+.estimation{
+    display: flex;
+    color: darkblue;
+    font-size:20px;  
+}
+/* apply button & destination */
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+input[type="text"] {
+    width: 50%;
+    height: 45px;
+    padding: 10px;
+    border: 3px solid #ccc;
+    border-radius: 25px;
+    margin-bottom: 15px;
+}  
+button {
+    padding: 10px 20px;
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+ 
+/* .export-button {
+    background-color: #388e3c;
+    color: #fff;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 15px; /* Adjust the border-radius to change the button shape */
+    /* cursor: pointer; */
+    /* font-size: 12.5px; */
+    /* margin-left:850px;  */
+    /* display:flex;  */
+/* } */
+/* .export-button:hover {
+    background-color: #45a049;
+} */
+ 
+/* next button */
+.next-button {
+    display: inline-block;
+    padding: 7.5px 20px;
+    /* text-decoration: none; */
+    color: #fff;
+    background-color: #388e3c;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 1px;
+}
+.next-button:hover {
+    background-color: #45a049;
+}
+/* .submain{
+    width:250px;
+    height:250px;
+} */
+.chart-container {
+    position: absolute;
+    text-align: center;
+    height: 200px;  
+    margin-left:50px  
+}
+.chart-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+/* .export-link {
+    margin-right: 5px;
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+    background-color: transparent;
+    float: right; /* Float the export link to the right *
+}
+.export-link img {
+    width: 20px; /* Adjust the width of the icon *
+    height: 20px; /* Adjust the height of the icon *
+    margin-right: 5px; /* Adjust the margin as needed *
+    margin-left: 0px;
+}  
+.export-link:hover {
+    background-color: transparent; /* Lighten the background color on hover *
+}  
+.export-link-between {
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed *
+    right: 20px; /* Adjust the right position as needed *
+    padding: 5px; /* Adjust the padding as needed *
+    font-size: 14px; /* Adjust the font size as needed *
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #ddd;
+} */
+/* Styles for the export button */
+.export-button {
+    position: flex;
+    margin-right: 10px;
+    /* right: 400px; /* Adjust the right position as needed * */
+    /* bottom: 220px;  /*Adjust the top position as needed * */
+    padding: 10px 20px;
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+ 
+.export-button:hover {
+    background-color: #45a049;
+}
+* Styles for the custom button */
+ .custom-button2 {
+  min-width: 150px; /* Adjust the width as needed */
+  padding: 15px 20px; /* Adjust the padding for height and width */
+  background-color: #408c3c; /* Color #2596be */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 40px; /* Add rounded corners */
+  cursor: pointer;
+  font-size: 18px; /* Adjust the font size as needed */
+}
+h3 {
+    font-weight: bold;
+}
+/* .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+  } */
+ 
+/* Responsive */
+@media (min-width:768px) {
+    .content {
+        width: auto;
+    }
+}
+ 
+ 
